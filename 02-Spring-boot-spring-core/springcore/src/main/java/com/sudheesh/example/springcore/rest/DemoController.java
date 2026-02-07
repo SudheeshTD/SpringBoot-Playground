@@ -2,6 +2,7 @@ package com.sudheesh.example.springcore.rest;
 
 import com.sudheesh.example.springcore.common.Coach;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,12 +11,12 @@ public class DemoController {
 
     private Coach myCoach;
 
-    /*
+
     @Autowired
     public DemoController(Coach theCoach){
         myCoach = theCoach;
     }
-    */
+
 
     /*
     @Autowired
@@ -23,12 +24,12 @@ public class DemoController {
         myCoach =  thecoach;
     }
     */
-
+/*
     @Autowired
     public void setCoach(Coach thecoach) {
         myCoach =  thecoach;
     }
-
+*/
     @GetMapping("/dailyworkout")
     public String getDailyWorkout(){
         return myCoach.getDailyWorkout();
