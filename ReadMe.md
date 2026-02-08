@@ -74,3 +74,29 @@ Bean - A bean is an object that is instantiated, assembled, and otherwise manage
   In this example, we have a configuration class `AppConfig` that defines a bean for the `ExternalService` class. The `externalService()` method is annotated with `@Bean`, which tells Spring to manage this bean and make it available for dependency injection throughout the application.
 
 - We can also use Bean ID to specify a custom name for the bean. By default, the bean name is the same as the method name, but we can override it by providing a value to the `@Bean` annotation.
+
+# Hibernate
+
+- Hibernate is an Object-Relational Mapping (ORM) framework for Java. It provides a way to map Java objects to database tables and vice versa, allowing developers to work with databases using Java objects instead of SQL queries.
+
+- EntityManager: The EntityManager is the primary interface used to interact with the persistence context in Hibernate. It provides methods for performing CRUD (Create, Read, Update, Delete) operations on entities, as well as managing transactions and queries.
+
+### ID Generation Strategies
+
+- `@Entity`: This annotation is used to mark a class as a JPA entity. It indicates that the class is a persistent Java object that will be mapped to a database table.
+- `@Table`: This annotation is used to specify the name of the database table that the entity will be mapped to. If not specified, the default table name will be the same as the entity class name.
+- `@Id`: This annotation is used to mark a field as the primary key of the entity. It indicates that the field will be used to uniquely identify each record in the database table.
+- `@GeneratedValue(strategy = GenerationType.<Method>)`: This annotation is used to specify the generation strategy for the primary key. It is typically used in conjunction with the `@Id` annotation to indicate how the primary key value should be generated.
+  - `@Column`: This annotation is used to specify the mapping between a field in the entity class and a column in the database table. It allows you to customize the column name, data type, length, and other properties.
+  - `@OneToOne`: This annotation is used to define a one-to-one relationship between two entities. It indicates that each instance of the first entity is associated with exactly one instance of the second entity, and vice versa.
+  - `@OneToMany`: This annotation is used to define a one-to-many relationship between two entities. It indicates that each instance of the first entity can be associated with multiple instances of the second entity, but each instance of the second entity is associated with only one instance of the first entity.
+  - `@ManyToOne`: This annotation is used to define a many-to-one relationship between two entities. It indicates that each instance of the first entity can be associated with only one instance of the second entity, but each instance of the second entity can be associated with multiple instances of the first entity.
+  - `@ManyToMany`: This annotation is used to define a many-to-many relationship between two entities. It indicates that each instance of the first entity can be associated with multiple instances of the second entity, and each instance of the second entity can be associated with multiple instances of the first entity.
+
+- `GenerationType.IDENTITY`: This strategy relies on the database to generate the primary key value. The database will automatically generate a unique identifier for each new record inserted into the table. This is commonly used with auto-incrementing columns in databases like MySQL.
+- `GenerationType.SEQUENCE`: This strategy uses a database sequence to generate unique identifiers. A sequence is a database object that generates a sequence of unique numbers. This strategy is commonly used in databases like Oracle and PostgreSQL.
+- `GenerationType.TABLE`: This strategy uses a separate database table to generate unique identifiers. The
+  table will contain a single row that keeps track of the next available identifier. This strategy is less efficient than the other two and is generally not recommended.
+- `GenerationType.AUTO`: This strategy allows the persistence provider (e.g., Hibernate) to choose the appropriate generation strategy based on the database dialect and other configuration settings. It is a convenient option when you want to let Hibernate decide the best strategy for your database.
+- `GenerationType.UUID`: This strategy generates a universally unique identifier (UUID) as the primary key. It is useful when you want to ensure uniqueness across different systems or databases.
+- `GenerationType.CUSTOM`: This strategy allows you to define a custom generator for generating primary key values. You can implement your own logic for generating unique identifiers based on your specific requirements.
