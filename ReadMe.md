@@ -100,3 +100,21 @@ Bean - A bean is an object that is instantiated, assembled, and otherwise manage
 - `GenerationType.AUTO`: This strategy allows the persistence provider (e.g., Hibernate) to choose the appropriate generation strategy based on the database dialect and other configuration settings. It is a convenient option when you want to let Hibernate decide the best strategy for your database.
 - `GenerationType.UUID`: This strategy generates a universally unique identifier (UUID) as the primary key. It is useful when you want to ensure uniqueness across different systems or databases.
 - `GenerationType.CUSTOM`: This strategy allows you to define a custom generator for generating primary key values. You can implement your own logic for generating unique identifiers based on your specific requirements.
+
+## Flow of Data in Spring Boot Application in Database Operations:
+
+1. Main App creates the Student Object (Data).
+
+2. Main App passes it to the DAO Interface (The Contract).
+
+3. DAO Implementation receives it and uses the EntityManager (The Tool).
+
+4. @Transactional opens the database gate.
+
+5. persist() puts the object in the "To-Do List".
+
+6. Closing Brace } triggers the actual INSERT SQL and updates the ID.
+
+7. The database generates the ID and sends it back to the application.
+
+8. The Student Object now has the generated ID and is fully persisted in the database.
