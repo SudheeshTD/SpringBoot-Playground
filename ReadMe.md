@@ -118,3 +118,23 @@ Bean - A bean is an object that is instantiated, assembled, and otherwise manage
 7. The database generates the ID and sends it back to the application.
 
 8. The Student Object now has the generated ID and is fully persisted in the database.
+
+## Crud Operarions Important Methods:
+
+- `persist()`: This method is used to save a new entity to the database. It makes the entity instance managed and persistent, meaning it will be tracked by the EntityManager and will be inserted into the database when the transaction is committed.
+- `merge()`: This method is used to update an existing entity in the database. It takes a detached entity instance and merges its state with the current persistence context. If the entity does not exist in the database, it will be inserted as a new record.
+- `remove()`: This method is used to delete an entity from the database. It takes a managed entity instance and removes it from the persistence context, which will result in a DELETE SQL statement being executed when the transaction is committed.
+- `find()`: This method is used to retrieve an entity from the database based on its primary key. It takes the entity class and the primary key value as parameters and returns the corresponding entity instance if found, or null if not found.
+- `findAll()`: This method is used to retrieve all instances of a particular entity from the database. It typically involves executing a JPQL query to fetch all records of the specified entity type.
+- `getReference()`: This method is similar to `find()`, but it returns a proxy instance of the entity instead of the actual entity. The proxy will be initialized with the entity's data when it is accessed for the first time. This can be useful for performance optimization, as it allows you to defer loading the entity's data until it is actually needed.
+- `createQuery()`: This method is used to create a JPQL (Java Persistence Query Language) query. It takes a JPQL query string as a parameter and returns a Query object that can be used to execute the query and retrieve results.
+- `executeUpdate()`: This method is used to execute a JPQL update or delete query. It returns the number of entities that were updated or deleted as a result of the query execution.
+
+- To Auto create tables in the database, we can use the following property in the application.properties file:
+
+  ```
+  spring.jpa.hibernate.ddl-auto=update
+
+  ```
+
+  This property tells Hibernate to automatically update the database schema based on the entity classes. It will create tables if they do not exist and update them if there are any changes to the entity classes. Other options for this property include `create`, `create-drop`, and `validate`, which have different behaviors for managing the database schema.
