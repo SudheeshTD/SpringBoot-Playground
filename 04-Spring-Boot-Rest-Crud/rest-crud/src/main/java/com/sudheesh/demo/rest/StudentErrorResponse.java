@@ -14,8 +14,10 @@ public class StudentErrorResponse {
 
     public StudentErrorResponse(int status, long timeStamp, String message) {
         this.status = status;
-        this.timeStamp = timeStamp;
+
         this.message = message;
+
+        this.timeStamp = timeStamp;
     }
 
     public int getStatus() {

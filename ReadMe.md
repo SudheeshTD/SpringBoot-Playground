@@ -75,6 +75,10 @@ Bean - A bean is an object that is instantiated, assembled, and otherwise manage
 
 - We can also use Bean ID to specify a custom name for the bean. By default, the bean name is the same as the method name, but we can override it by providing a value to the `@Bean` annotation.
 
+- `@ExceptionHandler`: This annotation is used to define a method that will handle exceptions thrown by controller methods. It allows you to specify how to handle specific exceptions and return appropriate responses to the client.
+
+- `@ControllerAdvice`: This annotation is used to define a global exception handler that applies to all controllers in the application. It allows you to centralize exception handling logic and provide consistent error responses across the application.
+
 # Hibernate
 
 - Hibernate is an Object-Relational Mapping (ORM) framework for Java. It provides a way to map Java objects to database tables and vice versa, allowing developers to work with databases using Java objects instead of SQL queries.
