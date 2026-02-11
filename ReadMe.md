@@ -41,6 +41,11 @@
 - `@Component`: This annotation is used to indicate that a class is a Spring component. It is a generic stereotype for any Spring-managed component and can be used to annotate classes that do not fit into other specific stereotypes like `@Service` or `@Repository`.
 - `@Lazy`: This annotation is used to indicate that a bean should be lazily initialized. It tells Spring to create the bean only when it is needed, rather than at application startup.
 - `@Scope`: This annotation is used to specify the scope of a bean. It can be used to define whether a bean is a singleton, prototype, request, session, or application scoped.
+- `@PathVariable`: This annotation is used to bind a method parameter to a URI template variable. It allows you to extract values from the URL and use them as method parameters in your controller methods.
+- `@RequestParam`: This annotation is used to bind a method parameter to a web request parameter. It allows you to extract query parameters from the URL and use them as method parameters in your controller methods.
+- `@RequestBody`: This annotation is used to bind the body of a web request to a method parameter. It allows you to deserialize the request body into a Java object.
+- `@ResponseBody`: This annotation is used to indicate that the return value of a method should be serialized and sent as the response body. It is typically used in RESTful web services to return JSON or XML data.
+
 - `@PostConstruct`: This annotation is used to indicate that a method should be executed after the bean has been initialized. It is typically used for any initialization code that needs to run after the bean's properties have been set. First, the bean is created and its dependencies are injected, and then the method annotated with `@PostConstruct` is called to perform any additional setup or initialization tasks.
 - `@PreDestroy`: This annotation is used to indicate that a method should be executed before the bean is destroyed. It is typically used for any cleanup code that needs to run before the bean is removed from the application context.
   - For "prototype" scoped beans, Spring does not call the destroy method. Gasp!
@@ -105,6 +110,11 @@ Bean - A bean is an object that is instantiated, assembled, and otherwise manage
 - `GenerationType.UUID`: This strategy generates a universally unique identifier (UUID) as the primary key. It is useful when you want to ensure uniqueness across different systems or databases.
 - `GenerationType.CUSTOM`: This strategy allows you to define a custom generator for generating primary key values. You can implement your own logic for generating unique identifiers based on your specific requirements.
 
+- `@Transactional`: This annotation is used to indicate that a method or class should be executed within a transactional context. It allows you to define the boundaries of a transaction and manage the commit and rollback behavior.
+- `@Repository`: This annotation is used to indicate that a class is a repository. It is a specialization of the `@Component` annotation and is used to indicate that the class provides data access functionalities.
+
+- `@Service`: This annotation is used to indicate that a class is a service provider. It is a specialization of the `@Component` annotation and is used to indicate that the class provides some business functionalities.
+
 ## Flow of Data in Spring Boot Application in Database Operations:
 
 1. Main App creates the Student Object (Data).
@@ -142,3 +152,12 @@ Bean - A bean is an object that is instantiated, assembled, and otherwise manage
   ```
 
   This property tells Hibernate to automatically update the database schema based on the entity classes. It will create tables if they do not exist and update them if there are any changes to the entity classes. Other options for this property include `create`, `create-drop`, and `validate`, which have different behaviors for managing the database schema.
+
+## Before JPA repository:
+
+1. Create a Student class and annotate it with `@Entity` to mark it as a JPA entity.
+2. Create a StudentDAO interface that defines the contract for data access operations related to the Student entity.
+3. Create a StudentDAOImpl class that implements the StudentDAO interface and provides the actual implementation of the data access methods using the EntityManager. All all implemented methods with `@Transactional` to manage transactions.(Once service layer is implemented, we can move the `@Transactional` annotation to the service layer and remove it from the DAO implementation.)
+4. In the main application class, create an instance of the StudentDAO implementation and use it to perform CRUD operations on the Student entity.
+
+## After JPA repository:
