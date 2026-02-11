@@ -183,3 +183,14 @@ Spring Data REST - This is a part of the Spring Data project that makes it easy 
 
 - `@RepositoryRestResource`: This annotation is used to customize the REST endpoint for a Spring Data repository. It allows you to specify the path and other properties of the REST endpoint that will be generated for the repository. By default, Spring Data REST will generate endpoints based on the repository interface name, but you can use this annotation to override the default behavior and provide a custom endpoint path.
 - `@RestResource`: This annotation is used to customize the REST endpoint for a specific repository method. It allows you to specify the path and other properties of the REST endpoint that will be generated for that method. By default, Spring Data REST will generate endpoints based on the method name, but you can use this annotation to override the default behavior and provide a custom endpoint path for that specific method.
+
+## SpringDoc -
+
+This is a library that provides automatic generation of API documentation for Spring Boot applications. It uses the OpenAPI specification to generate interactive API documentation that can be accessed through a web interface. SpringDoc integrates with Spring Boot and allows you to easily document your RESTful APIs without writing any additional code. It provides features such as support for multiple API versions, customizable documentation, and integration with Swagger UI for interactive API exploration.
+
+Swagger UI - This is a popular tool for visualizing and interacting with RESTful APIs. It provides a user-friendly interface that allows developers to explore and test API endpoints, view request and response details, and generate API documentation. Swagger UI can be integrated with Spring Boot applications using libraries like SpringDoc to automatically generate API documentation based on the OpenAPI specification. It is widely used in the industry for API development and documentation.
+
+For API documentation with SpringDoc and Swagger UI, you can refer to the following resources:
+
+- /v3/api-docs - This endpoint provides the OpenAPI specification in JSON format for your Spring Boot application. It contains all the details about your API endpoints, request and response models, and other relevant information.
+- /swagger-ui.html - This endpoint provides the Swagger UI interface for your API documentation. It allows you to interact with your API endpoints, view request and response details, and explore the API documentation in a user-friendly way. You can access this endpoint in your web browser to see the generated API documentation for your Spring Boot application.
