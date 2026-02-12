@@ -194,3 +194,10 @@ For API documentation with SpringDoc and Swagger UI, you can refer to the follow
 
 - /v3/api-docs - This endpoint provides the OpenAPI specification in JSON format for your Spring Boot application. It contains all the details about your API endpoints, request and response models, and other relevant information.
 - /swagger-ui.html - This endpoint provides the Swagger UI interface for your API documentation. It allows you to interact with your API endpoints, view request and response details, and explore the API documentation in a user-friendly way. You can access this endpoint in your web browser to see the generated API documentation for your Spring Boot application.
+
+## Spring Security
+
+- `Configuration`: This annotation indicates that the class can be used by the Spring IoC container as a source of bean definitions. It is typically used in conjunction with `@EnableWebSecurity` to configure security settings for a Spring Boot application.
+- `EnableWebSecurity`: This annotation enables Spring Security's web security support and provides the configuration for securing web applications. It is typically used in conjunction with `@Configuration` to define security settings for a Spring Boot application.
+
+- UserDetailsManager - This is an interface provided by Spring Security that extends the UserDetailsService interface. It provides additional methods for managing user accounts, such as creating, updating, and deleting user accounts. It is typically used in applications that require user management functionality, allowing you to easily manage user accounts and their associated details.
