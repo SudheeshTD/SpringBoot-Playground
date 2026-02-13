@@ -201,3 +201,7 @@ For API documentation with SpringDoc and Swagger UI, you can refer to the follow
 - `EnableWebSecurity`: This annotation enables Spring Security's web security support and provides the configuration for securing web applications. It is typically used in conjunction with `@Configuration` to define security settings for a Spring Boot application.
 
 - UserDetailsManager - This is an interface provided by Spring Security that extends the UserDetailsService interface. It provides additional methods for managing user accounts, such as creating, updating, and deleting user accounts. It is typically used in applications that require user management functionality, allowing you to easily manage user accounts and their associated details.
+
+## Spring MVC
+
+- `@Controller`: This annotation is used to indicate that a class is a Spring MVC controller. It is a specialization of the `@Component` annotation and is used to indicate that the class is responsible for handling web requests and returning views or data as responses.
