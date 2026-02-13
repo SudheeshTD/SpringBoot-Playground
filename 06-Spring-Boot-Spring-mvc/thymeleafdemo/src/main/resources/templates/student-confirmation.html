@@ -5,14 +5,15 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Hello World- Input Form</title>
+    <title>Student Confirmation Form</title>
 </head>
 <body>
-    <form th:action="@{/processFormVersionThree}" method="POST">
-        <input type = "text" name = "studentName" placeholder="Whats your Name?" />
 
-        <input type="submit" />
-</form>
+<h3> Student Confirmation Form</h3>
+
+<h3>Student Confirmation</h3>
+
+The Student is confirmed: <span th:text="${student.firstName} + ' ' + ${student.lastName}"  />
 
 </body>
 </html>

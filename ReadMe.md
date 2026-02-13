@@ -205,3 +205,5 @@ For API documentation with SpringDoc and Swagger UI, you can refer to the follow
 ## Spring MVC
 
 - `@Controller`: This annotation is used to indicate that a class is a Spring MVC controller. It is a specialization of the `@Component` annotation and is used to indicate that the class is responsible for handling web requests and returning views or data as responses.
+
+- `@ModelAttribute`: This annotation is used to bind a method parameter or method return value to a named model attribute. It allows you to add attributes to the model that can be accessed in the view layer, such as in JSP or Thymeleaf templates. It can be used at the method level or parameter level to specify the name of the model attribute and its value.
