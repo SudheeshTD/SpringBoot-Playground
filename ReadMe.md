@@ -207,3 +207,7 @@ For API documentation with SpringDoc and Swagger UI, you can refer to the follow
 - `@Controller`: This annotation is used to indicate that a class is a Spring MVC controller. It is a specialization of the `@Component` annotation and is used to indicate that the class is responsible for handling web requests and returning views or data as responses.
 
 - `@ModelAttribute`: This annotation is used to bind a method parameter or method return value to a named model attribute. It allows you to add attributes to the model that can be accessed in the view layer, such as in JSP or Thymeleaf templates. It can be used at the method level or parameter level to specify the name of the model attribute and its value.
+
+- `@Value("${<Var-name-of-value>}")`: This annotation is used to inject values from properties files or environment variables into Spring beans. It allows you to externalize configuration and make your application more flexible by allowing you to change values without modifying the code. You can use this annotation to inject values such as database connection strings, API keys, or any other configuration properties that your application needs.
+
+- `th:field`: This is a Thymeleaf attribute used in HTML templates to bind form fields to model attributes. It allows you to create forms that can submit data to the server and automatically bind the form fields to the corresponding model attributes in your Spring MVC controller. This makes it easier to handle form submissions and process user input in your application.
