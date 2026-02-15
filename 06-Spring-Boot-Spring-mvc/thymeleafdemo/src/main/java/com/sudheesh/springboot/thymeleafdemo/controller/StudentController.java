@@ -18,6 +18,14 @@ public class StudentController {
     @Value("${countries}")
     private List<String> countries;
 
+
+    @Value("${languages}")
+    private List<String> languages;
+
+    @Value("${systems}")
+    private List<String> systems;
+
+
     @GetMapping("/showStudentForm")
     public String showForm(Model theModel){
 
@@ -25,6 +33,8 @@ public class StudentController {
 
         theModel.addAttribute("student", theStudent);
         theModel.addAttribute("countries", countries);
+        theModel.addAttribute("languages", languages);
+        theModel.addAttribute("systems", systems);
 
         return "student-form";
     }
@@ -35,6 +45,8 @@ public class StudentController {
         System.out.println("theStudent: " + theStudent.getFirstName() + " " + theStudent.getLastName());
 
         System.out.println("Place: " + theStudent.getCountry());
+
+        System.out.println("Fav Subj: "+ theStudent.getFavoriteLanguage());
 
         return "student-confirmation";
 
