@@ -231,3 +231,45 @@ For API documentation with SpringDoc and Swagger UI, you can refer to the follow
 - `@{...}` (Link): This syntax is used in Thymeleaf templates to create links to other pages or resources. It allows you to generate URLs based on the context of the application, such as the current request or the application's base URL. You can use this syntax to create links to other pages within your application, as well as to external resources. It is commonly used in conjunction with `th:href` to set the href attribute of anchor tags in HTML templates.
 
 - `@InitBinder`: This annotation is used in Spring MVC controllers to indicate that a method should be used to initialize a WebDataBinder. The WebDataBinder is responsible for binding request parameters to Java objects and performing data conversion and validation. By using @InitBinder, you can customize the binding process for specific types of objects or specific fields, allowing you to handle complex data binding scenarios in your application.
+
+- `@Min` and `@Max`: These annotations are used to specify minimum and maximum values for numeric fields in a model object. They are part of the Bean Validation API and can be used to validate that a numeric field falls within a specified range. For example, you can use `@Min(0)` to ensure that a field cannot have a negative value, and `@Max(100)` to ensure that a field cannot exceed 100. These annotations can be used in conjunction with `@Valid` to automatically trigger validation when a form is submitted in a Spring MVC application.
+
+- `@Size`: This annotation is used to specify the minimum and maximum size of a string or collection field in a model object. It is part of the Bean Validation API and can be used to validate that a string field has a certain length or that a collection field has a certain number of elements. For example, you can use `@Size(min = 2, max = 50)` to ensure that a string field has at least 2 characters and no more than 50 characters. This annotation can be used in conjunction with `@Valid` to automatically trigger validation when a form is submitted in a Spring MVC application.
+
+- `@Pattern`: This annotation is used to specify a regular expression pattern that a string field must match in a model object. It is part of the Bean Validation API and can be used to validate that a string field conforms to a specific format. For example, you can use `@Pattern(regexp = "^[A-Za-z0-9+_.-]+@(.+)$"){<total characters>}` to ensure that an email field matches a valid email format. This annotation can be used in conjunction with `@Valid` to automatically trigger validation when a form is submitted in a Spring MVC application.
+
+- `@NotNull`: This annotation is used to indicate that a field in a model object cannot be null. It is part of the Bean Validation API and can be used to validate that a required field has a value before processing it in the controller. For example, you can use `@NotNull` on a field to ensure that it must have a value when a form is submitted. This annotation can be used in conjunction with `@Valid` to automatically trigger validation when a form is submitted in a Spring MVC application.
+
+- `@NotEmpty`: This annotation is used to indicate that a string or collection field in a model object cannot be empty. It is part of the Bean Validation API and can be used to validate that a required field has a value before processing it in the controller. For example, you can use `@NotEmpty` on a string field to ensure that it must have at least one character when a form is submitted, or on a collection field to ensure that it must have at least one element. This annotation can be used in conjunction with `@Valid` to automatically trigger validation when a form is submitted in a Spring MVC application.
+
+- messages.properties - File should be in the resources folder - This is a properties file used in Spring MVC applications to store custom validation messages for Bean Validation constraints. It allows you to define custom error messages for validation failures, which can be displayed to the user when a form submission fails validation. You can specify messages for specific constraints, such as `@NotNull`, `@Size`, `@Pattern`, etc., by using the constraint's annotation name followed by a dot and the message key. For example, you can define a message for the `@NotNull` constraint on a field named "username" with the key `NotNull.username` and provide a custom error message in the properties file. This allows you to provide user-friendly error messages that are specific to your application's requirements.
+
+## Creating Custom Validation Annotation:
+
+- `@Constraint(validatedBy = {CustomValidator.class})`: This annotation is used to define a custom validation constraint in Spring MVC. It specifies the validator class that will be responsible for validating the annotated field or method. The `validatedBy` attribute takes an array of validator classes, allowing you to specify multiple validators if needed. The custom validator class must implement the `ConstraintValidator` interface and provide the logic for validating the annotated field or method based on your specific requirements. This allows you to create custom validation rules that are not covered by the standard Bean Validation constraints.
+
+- `@Target({ElementType.FIELD, ElementType.METHOD})`: This annotation is used to specify the target elements for a custom validation annotation. It indicates where the custom validation annotation can be applied, such as on fields, methods, or other elements. In this example, the custom validation annotation can be applied to both fields and methods. You can customize the target elements based on your specific use case and requirements.
+
+- `@Retention(RetentionPolicy.RUNTIME)`: This annotation is used to specify the retention policy for a custom validation annotation. It indicates how long the annotation should be retained in the Java bytecode and whether it should be available at runtime. In this example, the retention policy is set to `RUNTIME`, which means that the annotation will be retained in the bytecode and can be accessed through reflection at runtime. This is necessary for the custom validation logic to be executed when validating the annotated field or method.
+
+## The following are the steps to create a custom validation annotation in Spring MVC:
+
+1. Name the Sticker: (public @interface MyCustomRule)
+
+2. Who is the Boss? (@Constraint -> point it to the class with the actual if/else logic).
+
+3. Where does it go? (@Target -> Fields and Methods).
+
+4. How long does it last? (@Retention -> RUNTIME!).
+
+5. The Big 4 Settings: Inside the brackets, you must provide four things:
+
+6. The value (what you are checking against).
+
+7. The message (the error text).
+
+8. The groups (copy-paste boilerplate).
+
+9. The payload (copy-paste boilerplate).
+
+10. The Logic: Create a class that implements ConstraintValidator and write the logic in the isValid() method.
